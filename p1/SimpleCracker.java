@@ -10,7 +10,7 @@ public class SimpleCracker
 		String shadowFile = "shadow-simple";
 		String commonPwds = "common-passwords.txt";
       
-      String user, salt, hash, hashOut;
+      String user, salt, hash, hashOut, testString;
 
 		String sline = null;
 		String cline = null;
@@ -44,7 +44,7 @@ public class SimpleCracker
 					//uses the current values from shadowSplit to do perform hashing and string comparisons.
 					while ((cline = commonBuffer.readLine()) != null)
 					{
-						String testString = salt + cline;
+						testString = salt + cline;
 
 						MessageDigest md = MessageDigest.getInstance("MD5");
 						byte[] bytes = md.digest(testString.getBytes());

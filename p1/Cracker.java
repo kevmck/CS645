@@ -9,7 +9,7 @@ public class Cracker
 		String shadowFile = "shadow";
 		String commonPwds = "common-passwords.txt";
       
-      String user, salt, hash, hashOut, salt_hash;
+      String user, salt, hash, salt_hash, output;
 
 		String sline = null;
 		String cline = null;
@@ -26,25 +26,40 @@ public class Cracker
 				shadowSplit = sline.split(":");
 				user = shadowSplit[0];
 				salt_hash = shadowSplit[1];
-            
             salt_hash_split = salt_hash.split("\\$");
             salt = salt_hash_split[2];
             hash = salt_hash_split[3];
-            //System.out.println(salt);
-            //System.out.println(hash);
+
+            try
+				{
+					FileReader commonData = new FileReader(commonPwds);
+					BufferedReader commonBuffer = new BufferedReader(commonData);
+
+					while ((cline = commonBuffer.readLine()) != null)
+					{
+                  MD5Shadow md5hasher = new MD5Shadow();
+                  output = md5hasher.crypt(cline, salt);
+
+						if (hash.equals(output))
+						{
+							System.out.println(user + ":" + cline);
+						}
+					}
+
+					commonBuffer.close();
+				}
+				
+				catch(Exception e)
+				{
+					System.out.print(e);
+            }         
          }
+         shadowBuffer.close();
 		}
       
 		catch(Exception e)
 		{
 			System.out.print(e);
-		}
-      
-      String password = "test";
-      String saltier = "salt";
-      MD5Shadow hasher = new MD5Shadow();
-      String output = hasher.crypt(password, saltier);
-      
-      System.out.println(output);
+		}     
 	}
 }
