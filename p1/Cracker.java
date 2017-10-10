@@ -7,7 +7,8 @@ public class Cracker
 	public static void main(String [] args)
 	{
 		String shadowFile = "shadow";
-		String commonPwds = "common-passwords.txt";
+		//String commonPwds = "common-passwords.txt";
+      String commonPwds = "words_alpha.txt";
       
       String user, salt, hash, salt_hash, output;
 
@@ -52,6 +53,7 @@ public class Cracker
 				catch(Exception e)
 				{
 					System.out.print(e);
+               e.printStackTrace(System.out);
             }         
          }
          shadowBuffer.close();
@@ -60,6 +62,7 @@ public class Cracker
 		catch(Exception e)
 		{
 			System.out.print(e);
+         e.printStackTrace(System.out);
 		}     
 	}
 }
