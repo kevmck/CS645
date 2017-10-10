@@ -8,7 +8,10 @@ public class Cracker
 	{
 		String shadowFile = "shadow";
 		//String commonPwds = "common-passwords.txt";
-      String commonPwds = "words_alpha.txt";
+      //String commonPwds = "words_alpha.txt";
+      //String commonPwds = "words_alpha_mod.txt";
+      //String commonPwds = "10k_most_common.txt";
+      String commonPwds = "10_million_password_list_top_100000.txt";
       
       String user, salt, hash, salt_hash, output;
 
@@ -38,6 +41,7 @@ public class Cracker
 
 					while ((cline = commonBuffer.readLine()) != null)
 					{
+                  //System.out.println(cline);
                   MD5Shadow md5hasher = new MD5Shadow();
                   output = md5hasher.crypt(cline, salt);
 
