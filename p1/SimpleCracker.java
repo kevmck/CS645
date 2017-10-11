@@ -1,3 +1,12 @@
+/*------------------------
+CS 645 - Project 1, Part 2
+
+Group members:
+Delia Batista
+Boniface Kiamue
+Kevin McKenzie
+------------------------*/
+
 import java.io.*;
 import java.math.*;
 import java.security.MessageDigest;
@@ -6,7 +15,7 @@ public class SimpleCracker
 {
 	public static void main(String [] args)
 	{
-		//Strings defining file names (assuming they are in the same directory as .java file)
+		//Strings defining file names (assuming they are in the same directory as this .java file)
 		String shadowFile = "shadow-simple";
 		String commonPwds = "common-passwords.txt";
       
@@ -21,7 +30,7 @@ public class SimpleCracker
 		//Try block implemented to catch any errors while reading "shadow-simple".
 		try
 		{
-			//FileReader and BufferReader instantiated for processing "shadow-simple". 
+			//FileReader and BufferReader for processing "shadow-simple". 
 			FileReader shadowData = new FileReader(shadowFile);
 			BufferedReader shadowBuffer = new BufferedReader(shadowData);
 			
@@ -56,6 +65,7 @@ public class SimpleCracker
 						if (hash.equals(hashOut))
 						{
 							System.out.println(user + ":" + cline);
+                     break;
 						}
 					}
 
@@ -63,7 +73,7 @@ public class SimpleCracker
 					commonBuffer.close();
 				}
 				
-				//Catch block for nested Try.
+				//Catch for nested Try.
 				catch(Exception e)
 				{
 					System.out.print(e);
@@ -74,10 +84,11 @@ public class SimpleCracker
 			shadowBuffer.close();
 		}
 		
-		//Catch block for outer Try.
+		//Catch for outer Try.
 		catch(Exception e)
 		{
 			System.out.print(e);
 		}
 	}
 }
+//
